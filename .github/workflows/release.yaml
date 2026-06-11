@@ -10,7 +10,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: [ubuntu-latest, windows-latest, macos-latest]
+                os: [windows-latest, macos-latest]
 
         steps:
         -   name: Check the source code
@@ -36,4 +36,3 @@ jobs:
                     target/jpackage/DoNotPassGoBanker*.deb
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                
