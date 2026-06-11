@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.6 - 2026-06-11
+
+### Add
+
+- Launch
+
+### Fix
+
+- Isolated jpackage types by operating system matrix.
+
 ## v1.0.5 - 2026-06-11
 
 ### Add

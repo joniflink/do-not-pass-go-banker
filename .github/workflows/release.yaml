@@ -30,8 +30,14 @@ jobs:
         run: |
           mvn clean package
           mvn dependency:copy-dependencies -DoutputDirectory=target/libs
-          jpackage --type dmg --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
-          jpackage --type exe --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
+          
+          if [ "${{ matrix.os }}" = "macos-latest" ]; then
+            jpackage --type dmg --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
+          fi
+          
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            jpackage --type exe --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
+          fi
         shell: bash
 
       - name: Upload Installer to GitHub Release
