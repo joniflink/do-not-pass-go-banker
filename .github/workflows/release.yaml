@@ -24,7 +24,7 @@ jobs:
                 cache: 'maven'
 
         -   name: Build Native Package with Maven
-            run: mvn clean package runtimePackage
+            run: mvn clean package
 
         -   name: Upload installer to GitHub Release
             uses: softprops/action-gh-release@v2
