@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.5 - 2026-06-11
+
+### Add
+
+- Launch
+
+### Fix
+
+- Added final name to pom
+
 ## v1.0.4 - 2026-06-11
 
 ### Add

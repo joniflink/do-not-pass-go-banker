@@ -33,6 +33,7 @@
     </dependencies>
 
     <build>
+        <finalName>DoNotPassGoBanker</finalName>
         <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>
