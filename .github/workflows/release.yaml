@@ -1,0 +1,39 @@
+name: Build and Release Desktop Installers
+
+on: 
+    release:
+        types: [published]
+
+jobs:
+    build:
+        name: Build on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+
+        steps:
+        -   name: Check the source code
+            uses: actions/checkout@v4
+
+        -   name: Set up Java 21 (GraalVM or standard JDK)
+            uses: actions/setup-java@v4
+            with:
+                java-version: '21'
+                distribution: 'temurin'
+                cache: 'maven'
+
+        -   name: Build Native Package with Maven
+            run: mvn clean package runtimePackage
+
+        -   name: Upload installer to GitHub Release
+            uses: softprops/action-gh-release@v2
+            with:
+                files: |
+                    target/jpackage/DoNotPassGoBanker*.exe
+                    target/jpackage/DoNotPassGoBanker*.msi
+                    target/jpackage/DoNotPassGoBanker*.dmg
+                    target/jpackage/DoNotPassGoBanker*.deb
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                

@@ -31,4 +31,21 @@
             <version>2.10.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.beryx</groupId>
+                <artifactId>badass-runtime-plugin</artifactId>
+                <version>1.13.0</version>
+                <configuration>
+                    <mainClass>Main</mainClass>
+                    <jpackageOptions>
+                        <option>--name</option>
+                        <option>DoNotPassGoBanker</option>
+                    </jpackageOptions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
