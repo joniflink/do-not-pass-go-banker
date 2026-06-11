@@ -1,37 +1,37 @@
 name: Build and Release Desktop Installers
 
-on: 
-    release:
-        types: [published]
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
 
 jobs:
-    build:
-        name: Build on ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: [windows-latest, macos-latest]
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
 
-        steps:
-        -   name: Check the source code
-            uses: actions/checkout@v4
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
 
-        -   name: Set up Java 21
-            uses: actions/setup-java@v4
-            with:
-                java-version: '21'
-                distribution: 'temurin'
-                cache: 'maven'
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
 
-        -   name: Build Native Package with Maven
-            run: mvn clean package
-
-        -   name: Upload installer to GitHub Release
-            uses: softprops/action-gh-release@v2
-            with:
-                files: |
-                    target/jpackage/DoNotPassGoBanker*.exe
-                    target/jpackage/DoNotPassGoBanker*.msi
-                    target/jpackage/DoNotPassGoBanker*.dmg
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Installer to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            target/**/*.exe
+            target/**/*.msi
+            target/**/*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
