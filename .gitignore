@@ -1,0 +1,6 @@
+/target/
+/bin/
+.settings/
+.idea/
+.DS_Store
+.vscode/

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainViewController">
+   <left>
+      <VBox prefHeight="573.0" prefWidth="235.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+         <children>
+            <Label text="Players">
+               <font>
+                  <Font name="Helvetica Bold" size="20.0" />
+               </font>
+            </Label>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox fx:id="playerListContainer" alignment="TOP_CENTER" />
+               </content>
+            </ScrollPane>
+            <Button fx:id="nextTurnButton" mnemonicParsing="false" onAction="#handleNextTurn" text="Next Turn" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Bank">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="25.0" layoutY="106.0" prefHeight="200.0" prefWidth="682.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Pass Go">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="passGoButton" mnemonicParsing="false" onAction="#handlePayGoMoney" text="Add Pass Go Money" />
+                                    <Label fx:id="passGoPaidLabel" />
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Label text="Get Money from Bank">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="Amount" />
+                                          <TextField fx:id="getMoneyFromBankField" onAction="#handleGetMoneyFieldEnterAction" />
+                                          <Button fx:id="resetGetMoneyFromBankButton" mnemonicParsing="false" onAction="#resetGetMoneyFromBank" text="X" visible="false" />
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="getMoneyFromBankInfoLabel" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Button fx:id="getMoneyFromBankButton" disable="true" mnemonicParsing="false" onAction="#handleGetMoneyFromBank" text="Execute" />
+                                          <Label fx:id="getMoneyFromBankDoneLabel" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Separator prefWidth="200.0" />
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Label text="Pay Money to Bank">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="Amount" />
+                                          <TextField fx:id="payMoneyToBankField" onAction="#handlePayMoneyFieldEnterAction" />
+                                          <Button fx:id="resetPayMoneyToBankButton" mnemonicParsing="false" onAction="#resetPayMoneyToBank" text="X" visible="false" />
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="payMoneyToBankInfoLabel" />
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Button fx:id="payMoneyToBankButton" disable="true" mnemonicParsing="false" onAction="#handlePayMoneyToBank" text="Execute" />
+                                          <Label fx:id="payMoneyToBankDoneLabel" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Other Players">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="184.0" layoutY="46.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Transfer Money to Other Players">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <GridPane hgap="10.0" vgap="10.0">
+                                <columnConstraints>
+                                  <ColumnConstraints />
+                                  <ColumnConstraints />
+                                    <ColumnConstraints />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="To" />
+                                    <Label text="Amount" GridPane.rowIndex="1" />
+                                    <TextField fx:id="transferToField" onAction="#handleTransferToEnterAction" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Button fx:id="resetTransferToButton" mnemonicParsing="false" onAction="#resetTransferTo" text="X" visible="false" GridPane.columnIndex="2" />
+                                    <ComboBox fx:id="transferToBox" prefWidth="161.0" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Label fx:id="transferToInfoLabel" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="transferToButton" disable="true" mnemonicParsing="false" onAction="#handleTransferTo" text="Execute" />
+                                    <Label fx:id="transferToDoneLabel" />
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <Label text="Transfer Money from Other Players">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <GridPane hgap="10.0" vgap="10.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints />
+                                    <ColumnConstraints />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="From" />
+                                    <Label text="Amount" GridPane.rowIndex="1" />
+                                    <TextField fx:id="transferFromField" onAction="#handleTransferFromEnterAction" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Button fx:id="resetTransferFromButton" mnemonicParsing="false" onAction="#resetTransferFrom" text="X" visible="false" GridPane.columnIndex="2" />
+                                    <ComboBox fx:id="transferFromBox" prefWidth="161.0" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Label fx:id="transferFromInfoLabel" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="transferFromButton" disable="true" mnemonicParsing="false" onAction="#handleTransferFrom" text="Execute" />
+                                    <Label fx:id="transferFromDoneLabel" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="freeParkingTab" text="Free Parking">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="152.0" layoutY="71.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <Label text="Put money to Free Parking">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Label text="Amount" />
+                                    <TextField fx:id="putMoneyToFreeParkingField" onAction="#handlePutMoneyToFreeParkingEnterAction" />
+                                    <Button fx:id="resetPutMoneyToFreeParkingButton" mnemonicParsing="false" onAction="#resetPutMoneyToFreeParking" text="X" visible="false" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="putMoneyToFreeParkingInfoLabel" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="putMoneyToFreeParkingButton" disable="true" mnemonicParsing="false" onAction="#handlePutMoneyToFreeParking" text="Execute" />
+                                    <Label fx:id="putMoneyToFreeParkingDoneLabel" />
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <Label text="Take money from free parking">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="takeMoneyFromFreeParkingButton" mnemonicParsing="false" onAction="#handleTakeMoneyFromFreeParking" text="Take all money" />
+                                    <Label fx:id="takeMoneyFromFreeParkingDoneLabel" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Bankruptcy">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="declareBankruptcyButton" mnemonicParsing="false" onAction="#handleDeclareBankruptcy" text="Declare Bankruptcy" />
+                                    <Label fx:id="declareBankruptyInfoLabel" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Dice">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#throwTwoDices" text="Throw two dices" />
+                                    <Label fx:id="twoDicesLabel" />
+                                    <Button fx:id="resetTwoDicesButton" mnemonicParsing="false" onAction="#resetTwoDices" text="X" visible="false" />
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#throwOneDice" text="Throw one dice" />
+                                    <Label fx:id="oneDiceLabel" />
+                                    <Button fx:id="resetOneDiceButton" mnemonicParsing="false" onAction="#resetOneDice" text="X" visible="false" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <MenuBar useSystemMenuBar="true" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="saveMenuItem" disable="true" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save as..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLoad" text="Load..." />
+            </items>
+          </Menu>
+            <Menu fx:id="advancedMenu" mnemonicParsing="false" text="Advanced">
+              <items>
+                  <Menu mnemonicParsing="false" text="Bank">
+                    <items>
+                      <MenuItem fx:id="payGoMoneyAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handlePayGoMoney" text="Pay Pass Go Money Again" />
+                        <MenuItem fx:id="getMoneyFromBankAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handleGetMoneyFromBank" text="Execute Get Money from Bank Again" />
+                        <MenuItem fx:id="payMoneyToBankAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handlePayMoneyToBank" text="Execute Pay Money to Bank Again" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Other Players">
+                    <items>
+                        <MenuItem fx:id="transferToAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handleTransferTo" text="Transfer Money to Other Players Again" />
+                      <MenuItem fx:id="transferFromAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handleTransferFrom" text="Transfer Money from Other Players Again" />
+                    </items>
+                  </Menu>
+                  <Menu fx:id="freeParkingMenu" mnemonicParsing="false" text="Free Parking">
+                    <items>
+                      <MenuItem fx:id="putMoneyToFreeParkingAgainMenuItem" disable="true" mnemonicParsing="false" onAction="#handlePutMoneyToFreeParking" text="Execute Put Money To Free Parking Again" />
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
