@@ -29,15 +29,14 @@ jobs:
       - name: Build Native Package with Maven
         run: |
           mvn clean package
-          # 📂 Explicitly dumping the installers into the target/ directory
-          jpackage --type dmg --name DoNotPassGoBanker --input target/ --main-jar DoNotPassGoBanker-1.jar --main-class Main --dest target/ || true
-          jpackage --type exe --name DoNotPassGoBanker --input target/ --main-jar DoNotPassGoBanker-1.jar --main-class Main --dest target/ || true
+          mvn dependency:copy-dependencies -DoutputDirectory=target/libs
+          jpackage --type dmg --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker-1.jar --main-class Main --dest target/ || true
+          jpackage --type exe --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker-1.jar --main-class Main --dest target/ || true
         shell: bash
 
       - name: Upload Installer to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          # 🎯 Telling the uploader exactly where to look
           files: |
             target/DoNotPassGoBanker.dmg
             target/DoNotPassGoBanker.exe

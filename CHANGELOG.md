@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.3 - 2026-06-11
+
+### Add
+
+- Launch
+
+### Fix
+
+- Copied dependencies for cloud jpackage
+
 ## v1.0.2 - 2026-06-11
 
 ### Add
