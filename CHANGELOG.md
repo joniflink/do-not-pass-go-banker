@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.4 - 2026-06-11
+
+### Add
+
+- Launch
+
+### Fix
+
+- Changes to the structure of the program
+
 ## v1.0.3 - 2026-06-11
 
 ### Add
