@@ -40,11 +40,18 @@ jobs:
           fi
         shell: bash
 
+      - name: Peek Inside Target Directory
+        run: |
+          echo "=== Content of target/ folder ==="
+          ls -la target/
+        shell: bash
+
       - name: Upload Installer to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             target/DoNotPassGoBanker.dmg
             target/DoNotPassGoBanker.exe
+          fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
