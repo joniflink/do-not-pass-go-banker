@@ -33,10 +33,12 @@ jobs:
           
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             jpackage --type dmg --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
+            mv target/DoNotPassGoBanker*.dmg target/DoNotPassGoBanker.dmg
           fi
           
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
             jpackage --type exe --name DoNotPassGoBanker --input target/ --module-path target/libs/ --main-jar DoNotPassGoBanker.jar --main-class Launcher --dest target/
+            mv target/DoNotPassGoBanker*.exe target/DoNotPassGoBanker.exe
           fi
         shell: bash
 

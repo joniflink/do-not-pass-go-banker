@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.8 - 2026-06-14
+
+### Add
+
+- Launch
+
+### Fix
+
+- Edit release code
+
 ## v1.0.7 - 2026-06-14
 
 ### Add
