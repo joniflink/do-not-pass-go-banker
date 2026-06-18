@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.9 - 2026-06-18
+
+### Fix
+
+- Fixed a bug where the data wasn't marked as changed when switching the player.
+
 ## v1.0.8 - 2026-06-14
 
 ### Add

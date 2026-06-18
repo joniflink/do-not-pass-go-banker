@@ -54,6 +54,7 @@ public class PlayerController {
     public void selectPlayer(int playerId) throws DoNotPassGoBankerException {
         getPlayerOrThrow(playerId);
         data.selectedPlayerId = playerId;
+        storageManager.markAsChanged();
     }
 
     /**
